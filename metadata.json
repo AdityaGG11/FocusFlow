@@ -1,0 +1,6 @@
+{
+  "name": "FocusFlow AI",
+  "description": "An AI-powered productivity companion that actively assists users by prioritizing work, breaking tasks down, planning days, recovering from missed deadlines, and providing productivity insights using Google Gemini AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

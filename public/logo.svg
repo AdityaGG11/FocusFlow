@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Main Accent Gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5500" />
+      <stop offset="100%" stop-color="#FFAA00" />
+    </linearGradient>
+
+    <!-- Subtle Glow Shadow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Inner Soft Neumorphic Shadow -->
+    <filter id="insetShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feOffset dx="4" dy="4"/>
+      <feGaussianBlur stdDeviation="6" result="offset-blur"/>
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+      <feFlood flood-color="black" flood-opacity="0.6" result="color"/>
+      <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- Base Smooth Neumorphic Circle -->
+  <circle cx="256" cy="256" r="230" fill="url(#bgGrad)" stroke="#334155" stroke-width="4" filter="drop-shadow(0 12px 24px rgba(15, 23, 42, 0.45))" />
+
+  <!-- Outer Orbit Ring (Flow) -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="12 12" opacity="0.6" />
+
+  <!-- Flow Wave Path 1 (Inner loop) -->
+  <path d="M 150 256 C 150 180, 362 180, 362 256 C 362 332, 150 332, 150 256 Z" 
+        fill="none" 
+        stroke="url(#accentGrad)" 
+        stroke-width="12" 
+        stroke-linecap="round" 
+        filter="url(#glow)" />
+
+  <!-- Accent Flow Node -->
+  <circle cx="256" cy="218" r="10" fill="#FFFFFF" filter="drop-shadow(0 0 8px #FF5500)" />
+  
+  <!-- Focus Center Dial Ring -->
+  <circle cx="256" cy="256" r="60" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.15" />
+
+  <!-- Clock Focus Hands (Focus theme) -->
+  <line x1="256" y1="256" x2="256" y2="216" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+  <line x1="256" y1="256" x2="296" y2="256" stroke="#FFAA00" stroke-width="6" stroke-linecap="round" />
+
+  <!-- Center Pin -->
+  <circle cx="256" cy="256" r="8" fill="#1E293B" stroke="#FFFFFF" stroke-width="3" />
+</svg>

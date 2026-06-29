@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Warm Tech Accent -->
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF5500" />
+      <stop offset="100%" stop-color="#FFAA00" />
+    </linearGradient>
+
+    <!-- Neural Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Card Background -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#heroBg)" />
+  <circle cx="400" cy="225" r="300" fill="none" stroke="#334155" stroke-width="1" opacity="0.3" />
+  <circle cx="400" cy="225" r="200" fill="none" stroke="#334155" stroke-width="1" stroke-dasharray="10 10" opacity="0.2" />
+
+  <!-- Synapse Lines (Linking Cards to AI Core) -->
+  <path d="M 180 150 Q 300 150 400 225" fill="none" stroke="#FF5500" stroke-width="2" stroke-dasharray="5 5" opacity="0.6" />
+  <path d="M 180 300 Q 300 300 400 225" fill="none" stroke="#FFAA00" stroke-width="2" stroke-dasharray="5 5" opacity="0.6" />
+  <path d="M 620 150 Q 500 150 400 225" fill="none" stroke="#FFAA00" stroke-width="2" opacity="0.5" />
+  <path d="M 620 300 Q 500 300 400 225" fill="none" stroke="#FF5500" stroke-width="2" opacity="0.5" />
+
+  <!-- LEFT BENTO CARD: Cognitive Task List -->
+  <g transform="translate(60, 60)">
+    <!-- Card Frame -->
+    <rect width="240" height="330" rx="20" fill="url(#cardGrad)" stroke="#334155" stroke-width="2" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.3))" />
+    <!-- Header -->
+    <text x="25" y="40" font-family="'Poppins', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF">⚡ Cognitive Tasks</text>
+    <rect x="25" y="55" width="40" height="3" rx="1.5" fill="url(#brandGrad)" />
+    
+    <!-- Checklist items -->
+    <g transform="translate(25, 80)">
+      <!-- Item 1 -->
+      <rect width="190" height="45" rx="10" fill="#1E293B" opacity="0.5" stroke="#334155" stroke-width="1" />
+      <circle cx="20" cy="22.5" r="8" fill="#FF5500" opacity="0.2" />
+      <path d="M 17 22 L 19 24 L 23 20" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" />
+      <text x="40" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Refactor DB Schemas</text>
+      <!-- Item 2 -->
+      <g transform="translate(0, 55)">
+        <rect width="190" height="45" rx="10" fill="#1E293B" opacity="0.5" stroke="#334155" stroke-width="1" />
+        <circle cx="20" cy="22.5" r="8" fill="#FFAA00" opacity="0.2" />
+        <path d="M 17 22 L 19 24 L 23 20" fill="none" stroke="#FFAA00" stroke-width="2" stroke-linecap="round" />
+        <text x="40" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#E2E8F0">Train Gemini Classifier</text>
+      </g>
+      <!-- Item 3 -->
+      <g transform="translate(0, 110)">
+        <rect width="190" height="45" rx="10" fill="#1E293B" opacity="0.5" stroke="#334155" stroke-width="1" />
+        <circle cx="20" cy="22.5" r="8" fill="#FFFFFF" opacity="0.1" />
+        <text x="40" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#94A3B8">Write API Integration Docs</text>
+      </g>
+      <!-- Item 4 (Archived/Done) -->
+      <g transform="translate(0, 165)">
+        <rect width="190" height="45" rx="10" fill="#1E293B" opacity="0.3" stroke="#334155" stroke-width="1" />
+        <circle cx="20" cy="22.5" r="8" fill="#10B981" opacity="0.2" />
+        <path d="M 16 22.5 L 19 25.5 L 24 19.5" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
+        <text x="40" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#64748B" text-decoration="line-through">Deploy Preview Build</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- RIGHT BENTO CARD: AI Execution Plan -->
+  <g transform="translate(500, 60)">
+    <!-- Card Frame -->
+    <rect width="240" height="330" rx="20" fill="url(#cardGrad)" stroke="#334155" stroke-width="2" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.3))" />
+    <!-- Header -->
+    <text x="25" y="40" font-family="'Poppins', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF">🧠 Coach Execution Timeline</text>
+    <rect x="25" y="55" width="40" height="3" rx="1.5" fill="url(#brandGrad)" />
+
+    <!-- Timeline Blocks -->
+    <g transform="translate(25, 80)">
+      <!-- Line -->
+      <line x1="15" y1="10" x2="15" y2="210" stroke="#334155" stroke-width="2" />
+
+      <!-- Step 1 -->
+      <g transform="translate(0, 0)">
+        <circle cx="15" cy="15" r="6" fill="#FF5500" filter="drop-shadow(0 0 4px #FF5500)" />
+        <rect x="35" y="0" width="155" height="45" rx="10" fill="#1E293B" opacity="0.6" stroke="#FF5500" stroke-width="1" />
+        <text x="45" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#FF5500">09:00 - High Focus Block</text>
+        <text x="45" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#94A3B8">Focus on Database Refactoring</text>
+      </g>
+
+      <!-- Step 2 -->
+      <g transform="translate(0, 55)">
+        <circle cx="15" cy="15" r="6" fill="#FFAA00" />
+        <rect x="35" y="0" width="155" height="45" rx="10" fill="#1E293B" opacity="0.4" stroke="#334155" stroke-width="1" />
+        <text x="45" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#FFAA00">11:00 - Collaboration Block</text>
+        <text x="45" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#94A3B8">Review classifier with team</text>
+      </g>
+
+      <!-- Step 3 -->
+      <g transform="translate(0, 110)">
+        <circle cx="15" cy="15" r="6" fill="#10B981" />
+        <rect x="35" y="0" width="155" height="45" rx="10" fill="#1E293B" opacity="0.4" stroke="#334155" stroke-width="1" />
+        <text x="45" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#10B981">13:00 - Recharge Interval</text>
+        <text x="45" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#94A3B8">15 min controlled breathing</text>
+      </g>
+
+      <!-- Step 4 -->
+      <g transform="translate(0, 165)">
+        <circle cx="15" cy="15" r="6" fill="#64748B" />
+        <rect x="35" y="0" width="155" height="45" rx="10" fill="#1E293B" opacity="0.3" stroke="#334155" stroke-width="1" />
+        <text x="45" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#94A3B8">14:00 - Creative Wrap</text>
+        <text x="45" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#64748B">Draft documentation</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- CENTER LOGO: Gemini Core Catalyst -->
+  <g transform="translate(400, 225)" filter="url(#glow)">
+    <!-- Outer energy shell -->
+    <circle cx="0" cy="0" r="65" fill="none" stroke="url(#brandGrad)" stroke-width="1" opacity="0.4" />
+    
+    <!-- Rotated glow circles -->
+    <ellipse cx="0" cy="0" rx="55" ry="25" fill="none" stroke="#FF5500" stroke-width="3" transform="rotate(30)" opacity="0.7"/>
+    <ellipse cx="0" cy="0" rx="55" ry="25" fill="none" stroke="#FFAA00" stroke-width="3" transform="rotate(150)" opacity="0.7"/>
+
+    <!-- Glass orb base -->
+    <circle cx="0" cy="0" r="45" fill="#0F172A" stroke="#475569" stroke-width="2" />
+    <circle cx="0" cy="0" r="45" fill="url(#brandGrad)" opacity="0.15" />
+
+    <!-- Core pulse -->
+    <circle cx="0" cy="0" r="20" fill="url(#brandGrad)" filter="blur(2px)"/>
+    
+    <!-- Center white highlight -->
+    <circle cx="0" cy="0" r="8" fill="#FFFFFF" />
+  </g>
+
+  <!-- TITLE BRANDS IN EMPTY SPACE -->
+  <text x="400" y="60" font-family="'Poppins', sans-serif" font-weight="800" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">
+    FOCUSFLOW <tspan fill="#FF5500">AI</tspan>
+  </text>
+  <text x="400" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="11" fill="#94A3B8" text-anchor="middle" letter-spacing="4">
+    COGNITIVE PRODUCTIVITY WORKSPACE
+  </text>
+  <rect x="360" y="95" width="80" height="3" rx="1.5" fill="url(#brandGrad)" />
+</svg>

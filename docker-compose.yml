@@ -1,0 +1,72 @@
+version: "3.8"
+
+services:
+  # 1. MySQL 8.0 Database Service
+  database:
+    image: mysql:8.0
+    container_name: focusflow-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: focusflow
+      MYSQL_USER: focusflow_user
+      MYSQL_PASSWORD: secure_db_password_99
+      MYSQL_ROOT_PASSWORD: root_db_password_88
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - focusflow-network
+
+  # 2. Spring Boot REST API Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: focusflow-backend
+    restart: always
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_NAME: focusflow
+      DB_USER: focusflow_user
+      DB_PASSWORD: secure_db_password_99
+      JWT_SECRET: ${JWT_SECRET:-404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - focusflow-network
+
+  # 3. React + Nginx Static Serving Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: focusflow-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - focusflow-network
+
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  focusflow-network:
+    driver: bridge

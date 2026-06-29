@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Poppins", sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #F5F7FA;
+    color: #2D3748;
+    @apply antialiased min-h-screen selection:bg-orange-500/20 selection:text-orange-800;
+  }
+}
+
+/* Custom Soft Neumorphic utilities */
+.neumorphic-flat {
+  background: #F5F7FA;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px #e4e7ec, -5px -5px 10px #ffffff;
+}
+
+.neumorphic-raised {
+  background: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 8px 8px 16px rgba(165, 175, 190, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neumorphic-raised-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 12px 12px 24px rgba(165, 175, 190, 0.25), -12px -12px 24px rgba(255, 255, 255, 1);
+}
+
+.neumorphic-pressed {
+  background: #F5F7FA;
+  border-radius: 20px;
+  box-shadow: inset 4px 4px 8px rgba(165, 175, 190, 0.15), inset -4px -4px 8px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.neumorphic-btn {
+  background: #FFFFFF;
+  border-radius: 9999px; /* Pill shapes by default */
+  box-shadow: 4px 4px 10px rgba(165, 175, 190, 0.25), -4px -4px 10px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease-in-out;
+}
+
+.neumorphic-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 6px 6px 14px rgba(165, 175, 190, 0.3), -6px -6px 14px rgba(255, 255, 255, 1);
+}
+
+.neumorphic-btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 5px rgba(165, 175, 190, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.95);
+}
+
+.neumorphic-input {
+  background: #F8FAFC;
+  border-radius: 12px;
+  box-shadow: inset 3px 3px 6px rgba(165, 175, 190, 0.12), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.2s ease;
+}
+
+.neumorphic-input:focus {
+  outline: none;
+  border-color: rgba(255, 106, 0, 0.3);
+  box-shadow: inset 3px 3px 6px rgba(165, 175, 190, 0.12), inset -3px -3px 6px rgba(255, 255, 255, 0.9), 0 0 0 3px rgba(255, 106, 0, 0.08);
+}
+
+/* Custom animated transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F7FA;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(165, 175, 190, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(165, 175, 190, 0.6);
+}

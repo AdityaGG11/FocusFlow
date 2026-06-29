@@ -1,0 +1,11 @@
+# Ignore Maven build output and local tooling
+target/
+.mvn/
+mvnw
+mvnw.cmd
+.idea/
+.vscode/
+.git
+.gitignore
+Dockerfile
+README.md
