@@ -1,5 +1,12 @@
 package com.focusflow.service;
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.focusflow.dto.auth.LoginRequest;
 import com.focusflow.dto.auth.LoginResponse;
 import com.focusflow.dto.auth.RegisterRequest;
@@ -10,12 +17,6 @@ import com.focusflow.mapper.UserMapper;
 import com.focusflow.repository.UserRepository;
 import com.focusflow.security.JwtUtils;
 import com.focusflow.security.SecurityUser;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AuthService {
@@ -66,17 +67,41 @@ public class AuthService {
      * @return The auth response containing token and user info.
      */
     @Transactional(readOnly = true)
-    public LoginResponse login(LoginRequest request) {
+public LoginResponse login(LoginRequest request) {
+    try {
+        System.out.println("LOGIN STEP 1");
+
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword())
         );
+
+        System.out.println("LOGIN STEP 2");
 
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new DuplicateResourceException("Invalid email or password"));
 
+        System.out.println("LOGIN STEP 3");
+
         UserDetails userDetails = new SecurityUser(user);
+
+        System.out.println("LOGIN STEP 4");
+
         String token = jwtUtils.generateToken(userDetails);
 
-        return userMapper.toLoginResponse(user, token);
+        System.out.println("LOGIN STEP 5");
+
+        LoginResponse response = userMapper.toLoginResponse(user, token);
+
+        System.out.println("LOGIN STEP 6");
+
+        return response;
+
+    } catch (Exception e) {
+        System.out.println("LOGIN FAILED");
+        e.printStackTrace();
+        throw e;
     }
+}
 }
